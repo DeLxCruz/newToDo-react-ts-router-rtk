@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useAppSelector } from "../app/hooks";
-import TaskCard from "./TaskCard";
 import { Task } from "../interfaces/task.interface";
+import TaskCard from "./TaskCard";
 
 function TasksList() {
   const tasks = useAppSelector((state) => state.tasks);
@@ -14,7 +14,7 @@ function TasksList() {
         <p>No tasks</p>
       ) : (
         <section>
-          <p>You have {tasks.length}</p>
+          <p>Tasks: {tasks.length}</p>
           {tasks.map((task: Task) => (
             <TaskCard key={task.id} task={task} />
           ))}

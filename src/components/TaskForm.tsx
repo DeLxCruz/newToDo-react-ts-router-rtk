@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { v4 as uuid } from "uuid";
 import { useAppDispatch, useAppSelector } from "../app/hooks";
 import { addTask, editTask } from "../features/tasks/taskSlice";
+import { Task } from "../interfaces/task.interface";
 
 type handleInputChange = ChangeEvent<HTMLInputElement | HTMLTextAreaElement>;
 
@@ -19,7 +20,7 @@ function TaskForm() {
 
   useEffect(() => {
     if (params.id) {
-      const foundTask = tasks.find((task) => task.id === params.id);
+      const foundTask = (tasks as Task[]).find((task) => task.id === params.id);
       if (foundTask) {
         setTask(foundTask);
       }
